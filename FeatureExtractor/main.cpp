@@ -1,8 +1,8 @@
-#include "cv.h"
-#include "highgui.h"
+//#include <opencv2/highgui.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <cstdio>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -50,12 +50,12 @@ void readDataActMap() {
     while(getline(file,line)) {
         stringstream lineStream(line);
         string element1, element2;
-        parseChk(getline(lineStream, element1, ','));
+        parseChk((bool)getline(lineStream, element1, ','));
         
         if (element1.compare("END") == 0) {
             break;
         }
-        parseChk(getline(lineStream, element2, ','));
+        parseChk((bool)getline(lineStream, element2, ','));
         if (element1.length() != 10) {
             errorMsg("Data Act Map file format mismatch..");
         }
